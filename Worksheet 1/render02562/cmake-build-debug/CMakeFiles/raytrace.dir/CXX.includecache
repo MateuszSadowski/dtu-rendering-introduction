@@ -136,42 +136,6 @@ builtin_types.h
 host_defines.h
 ../3rdparty/include/host_defines.h
 
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/AccObj.h
-optix_world.h
--
-Object3D.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Object3D.h
-
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Accelerator.cpp
-vector
--
-optix_world.h
--
-AccObj.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/AccObj.h
-Object3D.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Object3D.h
-Plane.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Plane.h
-HitInfo.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/HitInfo.h
-Accelerator.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Accelerator.h
-
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Accelerator.h
-vector
--
-optix_world.h
--
-AccObj.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/AccObj.h
-Object3D.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Object3D.h
-Plane.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Plane.h
-HitInfo.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/HitInfo.h
-
 /Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/HitInfo.h
 optix_world.h
 -
@@ -188,13 +152,21 @@ optix_world.h
 HitInfo.h
 /Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/HitInfo.h
 
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Plane.h
+/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Sphere.cpp
 optix_world.h
 -
-ObjMaterial.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/ObjMaterial.h
 HitInfo.h
 /Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/HitInfo.h
+Sphere.h
+/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Sphere.h
+
+/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Sphere.h
+optix_world.h
+-
+HitInfo.h
+/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/HitInfo.h
+ObjMaterial.h
+/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/ObjMaterial.h
 Object3D.h
 /Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Object3D.h
 

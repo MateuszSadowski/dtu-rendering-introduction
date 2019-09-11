@@ -37,6 +37,36 @@ bool Sphere::intersect(const Ray& r, HitInfo& hit, unsigned int prim_idx) const
   // Hints: (a) The square root function is called sqrt(x).
   //        (b) There is no need to handle the case where the 
   //            discriminant is zero separately.
+  float a = 1;
+  float b = 2 * dot(r.origin - center, r.direction);
+  float c = dot(r.origin - center, r.origin - center) - pow(radius, 2);
+  float t1 = -(b / 2) - sqrt(pow(b / 2, 2) - c);
+
+  float3 hitPosition1 = r.origin + t1 * r.direction;
+  float3 normal1 = normalize(hitPosition1 - center);
+  if(t1 > r.tmin && t1 < r.tmax) {
+      hit.has_hit = true;
+      hit.dist = t1;
+      hit.position = hitPosition1;
+      hit.geometric_normal = normal1;
+      hit.shading_normal = normal1;
+      hit.material = &material;
+      return true;
+  }
+
+  float t2 = -(b / 2) - sqrt(pow(b / 2, 2) - c);
+
+    float3 hitPosition2 = r.origin + t2 * r.direction;
+    float3 normal2 = normalize(hitPosition2 - center);
+    if(t2 > r.tmin && t2 < r.tmax) {
+        hit.has_hit = true;
+        hit.dist = t2;
+        hit.position = r.origin + t2 * r.direction;
+        hit.geometric_normal = normal2;
+        hit.shading_normal = normal2;
+        hit.material = &material;
+        return true;
+    }
 
   return false;
 }

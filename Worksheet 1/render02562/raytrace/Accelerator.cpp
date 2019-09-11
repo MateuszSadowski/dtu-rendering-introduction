@@ -46,22 +46,12 @@ bool Accelerator::closest_hit(optix::Ray &r, HitInfo &hit) const {
     //
     // Hint: Call the intersect(...) function for each primitive object in
     //       the scene. See the functions below this one for inspiration.
-    for (unsigned int i = 0; i < planes.size(); ++i){
+    for (unsigned int i = 0; i < primitives.size(); ++i){
         AccObj *obj = primitives[i];
         if (obj->geometry->intersect(r, hit, obj->prim_idx))
             r.tmax = hit.dist;
     }
-//    if (!any_plane(r, hit)) {
-//        unsigned int i = 0;
-//        while (i < primitives.size() && !hit.has_hit) {
-//            AccObj *obj = primitives[i++];
-//            obj->geometry->intersect(r, hit, obj->prim_idx);
-//            if(hit.dist > r.tmax)
-//                continue;
-//            else if(hit.dist < closestHit.dist)
-//                closestHit = hit;
-//        }
-//    }
+
     return hit.has_hit;
 }
 

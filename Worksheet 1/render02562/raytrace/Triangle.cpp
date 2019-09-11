@@ -22,7 +22,19 @@ bool intersect_triangle(const Ray& ray,
   // with not implementing this function. However, I recommend that
   // you implement it for completeness.
 
-  return false;
+    float3 e0 = v1 - v0;
+    float3 e1 = v0 - v2;
+    n = cross(e0, e1);
+
+    float3 a = v0 - ray.origin;
+    float3 b = cross(a, ray.direction);
+    float c = dot(ray.direction, n);
+
+    t = dot(a, n) / c;
+    v = dot(b, e1) / c;
+    w = dot(b, e0) / c;
+
+    return (v >= 0 && w >= 0 && v + w <= 1) && (t > ray.tmin && t < ray.tmax);
 }
 
 
@@ -53,6 +65,19 @@ bool Triangle::intersect(const Ray& r, HitInfo& hit, unsigned int prim_idx) cons
   //       Note that you need to do scope resolution (optix:: or just :: in front
   //       of the function name) to choose between the OptiX implementation and
   //       the function just above this one.
+
+  float t, v, w;
+  float3 n;
+
+  if(::intersect_triangle(r, v0, v1, v2, n, t, v, w)) {
+      hit.has_hit = true;
+      hit.dist = t;
+      hit.position = r.origin + t * r.direction;
+      hit.geometric_normal = normalize(n);
+      hit.shading_normal = normalize(n);
+      hit.material = &material;
+      return true;
+  }
 
   return false;
 }
