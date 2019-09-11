@@ -6,14 +6,6 @@
 
 #IncludeRegexTransform: 
 
-../3rdparty/include/GL/glut.h
-windows.h
--
-GL/gl.h
--
-GL/glu.h
--
-
 ../3rdparty/include/builtin_types.h
 device_types.h
 ../3rdparty/include/device_types.h
@@ -144,8 +136,6 @@ builtin_types.h
 host_defines.h
 ../3rdparty/include/host_defines.h
 
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/SOIL/SOIL.h
-
 /Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/AccObj.h
 optix_world.h
 -
@@ -182,43 +172,11 @@ Plane.h
 HitInfo.h
 /Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/HitInfo.h
 
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/BspTree.h
-vector
--
-optix_world.h
--
-AccObj.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/AccObj.h
-Object3D.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Object3D.h
-Plane.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Plane.h
-HitInfo.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/HitInfo.h
-Accelerator.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Accelerator.h
-
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Camera.h
-optix_world.h
--
-
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/HDRTexture.h
-optix_world.h
--
-Texture.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Texture.h
-
 /Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/HitInfo.h
 optix_world.h
 -
 ObjMaterial.h
 /Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/ObjMaterial.h
-
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/IndexedFaceSet.h
-vector
--
-optix_world.h
--
 
 /Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/ObjMaterial.h
 string
@@ -239,144 +197,4 @@ HitInfo.h
 /Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/HitInfo.h
 Object3D.h
 /Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Object3D.h
-
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Randomizer.h
-valarray
--
-ctime
--
-
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/RayCaster.cpp
-iostream
--
-optix_world.h
--
-mt_random.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/mt_random.h
-Shader.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Shader.h
-HitInfo.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/HitInfo.h
-RayCaster.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/RayCaster.h
-
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/RayCaster.h
-vector
--
-optix_world.h
--
-SphereTexture.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/SphereTexture.h
-Tracer.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Tracer.h
-
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Scene.h
-vector
--
-string
--
-map
--
-optix_world.h
--
-ObjMaterial.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/ObjMaterial.h
-Object3D.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Object3D.h
-TriMesh.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/TriMesh.h
-Plane.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Plane.h
-Sphere.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Sphere.h
-Triangle.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Triangle.h
-Camera.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Camera.h
-Shader.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Shader.h
-HitInfo.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/HitInfo.h
-BspTree.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/BspTree.h
-Texture.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Texture.h
-
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Shader.h
-optix_world.h
--
-HitInfo.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/HitInfo.h
-
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Sphere.h
-optix_world.h
--
-HitInfo.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/HitInfo.h
-ObjMaterial.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/ObjMaterial.h
-Object3D.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Object3D.h
-
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/SphereTexture.h
-optix_world.h
--
-HDRTexture.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/HDRTexture.h
-
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Texture.h
-optix_world.h
--
-my_glut.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/my_glut.h
-../SOIL/SOIL.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/SOIL/SOIL.h
-
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Tracer.h
-optix_world.h
--
-Shader.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Shader.h
-Scene.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Scene.h
-HitInfo.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/HitInfo.h
-
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/TriMesh.h
-string
--
-vector
--
-optix_world.h
--
-IndexedFaceSet.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/IndexedFaceSet.h
-ObjMaterial.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/ObjMaterial.h
-HitInfo.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/HitInfo.h
-Object3D.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Object3D.h
-
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Triangle.h
-vector
--
-optix_world.h
--
-HitInfo.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/HitInfo.h
-ObjMaterial.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/ObjMaterial.h
-Object3D.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Object3D.h
-
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/mt_random.h
-Randomizer.h
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/Randomizer.h
-
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/raytrace/my_glut.h
-GLUT/glut.h
--
-GL/glut.h
--
 
