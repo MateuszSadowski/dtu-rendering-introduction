@@ -1,4 +1,5 @@
 /cmake
+/cmake-build-debug
 CMakeLists.txt
 configuration.h.in
 /Debug
