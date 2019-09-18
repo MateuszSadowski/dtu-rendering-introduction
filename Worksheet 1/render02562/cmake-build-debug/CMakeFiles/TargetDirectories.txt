@@ -1,4 +1,0 @@
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/cmake-build-debug/CMakeFiles/raytrace.dir
-/Users/mateuszsadowski/Documents/programowanie/DTU/Rendering Introduction/Worksheet 1/render02562/cmake-build-debug/CMakeFiles/SOIL.dir
