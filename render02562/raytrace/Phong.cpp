@@ -35,6 +35,20 @@ float3 Phong::shade(const Ray& r, HitInfo& hit, bool emit) const
   // s                  (shininess or Phong exponent of the material)
   //
   // Hint: Call the sample function associated with each light in the scene.
+  float3 L_r = make_float3(0.0f);
+  float3 w_0 = (-1) * normalize(r.direction);
 
-  return Lambertian::shade(r, hit, emit);
+  for (int i = 0; i < lights.size(); i++) {
+      float3 L_i, dir;
+      lights[i]->sample(hit.position, dir, L_i);
+
+      float3 w_i = dir;
+      float3 n = normalize(hit.shading_normal);
+      float3 w_r = 2 * dot(w_i, n) * n - w_i;
+
+      L_r += (rho_d * M_1_PIf + rho_s * (s + 2) * (M_1_PIf / 2) * pow(dot(w_0, w_r), s) * L_i * dot(w_i, n));
+  }
+
+//  return Lambertian::shade(r, hit, emit);
+    return L_r;
 }

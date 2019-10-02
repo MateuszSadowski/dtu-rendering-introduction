@@ -1,11 +1,11 @@
-/cmake
-/cmake-build-debug
-CMakeLists.txt
-configuration.h.in
-/Debug
-/Release
-/SOIL
-/models
+/render02562/cmake
+/render02562/cmake-build-debug
+/render02562/CMakeLists.txt
+/render02562/configuration.h.in
+/render02562/Debug
+/render02562/Release
+/render02562/SOIL
+/render02562/models
 .vs
 
 *.JPG
