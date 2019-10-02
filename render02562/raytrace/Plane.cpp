@@ -51,9 +51,9 @@ bool Plane::intersect(const Ray& r, HitInfo& hit, unsigned int prim_idx) const
           get_uv(hit.position, hit.texcoord.x, hit.texcoord.y);
       }
       return true;
-  } else {
-      return false;
   }
+
+  return false;
 }
 
 void Plane::transform(const Matrix4x4& m)
@@ -84,6 +84,6 @@ void Plane::get_uv(const float3& hit_pos, float& u, float& v) const
 
   float3 tex_cords = position - hit_pos;
 
-  u = tex_scale * dot(tex_cords, onb.m_tangent);
-  v = tex_scale * dot(tex_cords, onb.m_binormal);
+  u = tex_scale / 10 * dot(tex_cords, onb.m_tangent);
+  v = tex_scale / 10 * dot(tex_cords, onb.m_binormal);
 }

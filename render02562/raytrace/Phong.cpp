@@ -46,7 +46,7 @@ float3 Phong::shade(const Ray& r, HitInfo& hit, bool emit) const
       float3 n = normalize(hit.shading_normal);
       float3 w_r = 2 * dot(w_i, n) * n - w_i;
 
-      L_r += (rho_d * M_1_PIf + rho_s * (s + 2) * (M_1_PIf / 2) * pow(dot(w_0, w_r), s) * L_i * dot(w_i, n));
+      L_r += (rho_d * M_1_PIf + rho_s * (s + 2) * (M_1_PIf / 2) * pow(fmax(dot(w_0, w_r), 0.0), s) * L_i * fmax(dot(w_i, n), 0.0));
   }
 
 //  return Lambertian::shade(r, hit, emit);

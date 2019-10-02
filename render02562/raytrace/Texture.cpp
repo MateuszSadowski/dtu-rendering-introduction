@@ -31,7 +31,7 @@ void Texture::load(const char* filename)
 
 void Texture::load(GLenum target, GLuint texture)
 {
-  glBindTexture(target, texture);    
+  glBindTexture(target, texture);
   glGetTexLevelParameteriv(target, 0, GL_TEXTURE_WIDTH, &width);
   glGetTexLevelParameteriv(target, 0, GL_TEXTURE_HEIGHT, &height);
   delete [] fdata;
@@ -59,7 +59,18 @@ float4 Texture::sample_nearest(const float3& texcoord) const
   // Hint: Remember to revert the vertical axis when finding the index
   //       into fdata.
 
-  return make_float4(0.0f);
+  float u = texcoord.x;
+  float v = texcoord.y;
+
+  float s = u - floor(u);
+  float t = -v - floor(-v);
+  float a = s * width;
+  float b = t * height;
+  int U = (int)(a + 0.5) % width;
+  int V = (int)(b + 0.5) % height;
+  int i = U + V * width;
+
+  return fdata[i];
 }
 
 float4 Texture::sample_linear(const float3& texcoord) const
@@ -81,8 +92,24 @@ float4 Texture::sample_linear(const float3& texcoord) const
   //
   // Hint: Use three lerp operations (or one bilerp) to perform the
   //       bilinear interpolation.
+  float u = texcoord.x;
+  float v = texcoord.y;
 
-  return sample_nearest(texcoord);
+  float s = u - floor(u);
+  float t = -v - floor(-v);
+  float a = s * width;
+  float b = t * height;
+  int U = (int)a;
+  int V = (int)b;
+  int i = U + V * width;
+  int i1 = ((U + 1) % width) + V * width;
+  int i2 = ((U + 1) % width) + ((V + 1) % height) * width;
+  int i3 = U + ((V + 1) % height) * width;
+
+  float c1 = a - U;
+  float c2 = b - V;
+
+  return bilerp(fdata[i], fdata[i1], fdata[i3], fdata[i2], c1, c2);
 }
 
 float4 Texture::look_up(unsigned int idx) const
@@ -90,16 +117,16 @@ float4 Texture::look_up(unsigned int idx) const
   idx *= channels;
   switch(channels)
   {
-  case 1: 
+  case 1:
   {
     float v = convert(data[idx]);
     return make_float4(v, v, v, 1.0f);
   }
-  case 2: 
+  case 2:
     return make_float4(convert(data[idx]), convert(data[idx]), convert(data[idx]), convert(data[idx + 1]));
-  case 3: 
+  case 3:
     return make_float4(convert(data[idx]), convert(data[idx + 1]), convert(data[idx + 2]), 1.0f);
-  case 4: 
+  case 4:
     return make_float4(convert(data[idx]), convert(data[idx + 1]), convert(data[idx + 2]), convert(data[idx + 3]));
   }
   return make_float4(0.0f);
