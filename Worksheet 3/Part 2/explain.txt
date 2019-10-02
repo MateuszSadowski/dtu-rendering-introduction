@@ -1,0 +1,2 @@
+If no texture is provided, the emission from surface hit is returned.
+Otherwise, the material of the object is retrived and the reduced emission is calculated.

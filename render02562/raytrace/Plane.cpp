@@ -47,6 +47,9 @@ bool Plane::intersect(const Ray& r, HitInfo& hit, unsigned int prim_idx) const
       hit.geometric_normal = normalize(onb.m_normal);
       hit.shading_normal = normalize(onb.m_normal);
       hit.material = &material;
+      if(material.has_texture) {
+          get_uv(hit.position, hit.texcoord.x, hit.texcoord.y);
+      }
       return true;
   } else {
       return false;
@@ -79,6 +82,8 @@ void Plane::get_uv(const float3& hit_pos, float& u, float& v) const
   // onb                (orthonormal basis of the plane: normal [n], tangent [b1], binormal [b2])
   // tex_scale          (constant for scaling the texture coordinates)
 
-  u = 0.0f;
-  v = 0.0f;
+  float3 tex_cords = position - hit_pos;
+
+  u = tex_scale * dot(tex_cords, onb.m_tangent);
+  v = tex_scale * dot(tex_cords, onb.m_binormal);
 }
