@@ -28,7 +28,13 @@ bool Directional::sample(const float3& pos, float3& dir, float3& L) const
   // light_dir  (direction of the emitted light)
   // emission   (radiance of the emitted light)
 
-  return false;
+    HitInfo hit;
+    float epsilon = 10e-4;
+    dir = -light_dir;
+    Ray shadow = Ray(pos, dir, 0, epsilon, RT_DEFAULT_MAX);
+    L = emission;
+
+    return !tracer->trace_to_any(shadow, hit);
 }
 
 string Directional::describe() const

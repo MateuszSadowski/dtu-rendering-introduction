@@ -29,7 +29,7 @@ bool AreaLight::sample(const float3& pos, float3& dir, float3& L) const
   //
   // Relevant data fields that are available (see Light.h and above):
   // shadows             (on/off flag for shadows)
-  // tracer              (pointer to ray tracer)
+  // tracer              (pointer to ray tracer)§
   // normals             (indexed face set of vertex normals)
   // mesh->face_areas    (array of face areas in the light source)
   //

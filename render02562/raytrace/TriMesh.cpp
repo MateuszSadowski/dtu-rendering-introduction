@@ -60,12 +60,23 @@ bool TriMesh::intersect(const Ray& r, HitInfo& hit, unsigned int prim_idx) const
     float3 v1 = geometry.vertex(face.y);
     float3 v2 = geometry.vertex(face.z);
 
+    float3 n1 = normals.vertex(face.x);
+    float3 n2 = normals.vertex(face.y);
+    float3 n3 = normals.vertex(face.z);
+
+    float3 normal;
+
     if(::intersect_triangle(r, v0, v1, v2, n, t, v, w)) {
+        if(has_normals()){
+            normal = normalize(n1 * (1 - v - w) + n2 * v + n3 * w);
+        } else {
+            normal = normalize(n);
+        }
         hit.has_hit = true;
         hit.dist = t;
         hit.position = r.origin + t * r.direction;
         hit.geometric_normal = normalize(n);
-        hit.shading_normal = normalize(n);
+        hit.shading_normal = normal;
         hit.material = &materials[mat_idx[prim_idx]];
         return true;
     }
