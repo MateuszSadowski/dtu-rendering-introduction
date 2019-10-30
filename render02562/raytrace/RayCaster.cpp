@@ -30,15 +30,20 @@ float3 RayCaster::compute_pixel(unsigned int x, unsigned int y) const {
     //            intersected material after the ray has been traced.
     //        (b) Use get_background(...) if the ray does not hit anything.
 
-    float2 ip_coords = make_float2(x, y) * win_to_ip + lower_left;
-    Ray r = scene->get_camera()->get_ray(ip_coords);
+    int numberOfSubpixels = jitter.size();
+    float3 result = make_float3(0, 0, 0);
+    for(int i = 0; i < numberOfSubpixels; i++) {
+        float2 ip_coords = make_float2(x, y) * win_to_ip + lower_left + jitter[i];
+        Ray r = scene->get_camera()->get_ray(ip_coords);
 
-    HitInfo hit;
-    if (scene->closest_hit(r, hit)) {
-        return scene->get_shader(hit)->shade(r, hit);
-    } else {
-        return get_background();
+        HitInfo hit;
+        if (scene->closest_hit(r, hit)) {
+            result += scene->get_shader(hit)->shade(r, hit);
+        } else {
+            result += get_background();
+        }
     }
+    return result / numberOfSubpixels;
 }
 
 float3 RayCaster::get_background(const float3 &dir) const {
