@@ -38,5 +38,15 @@ float3 MCGlossy::shade(const Ray& r, HitInfo& hit, bool emit) const
   // Hint: Use the function shade_new_ray(...) to pass a newly traced ray to
   //       the shader for the surface it hit.
 
+  //make a new ray
+  //sample direction
+  HitInfo new_hit;
+  Ray new_r = Ray(hit.position, sample_cosine_weighted(hit.shading_normal), 0, 0.1);
+  //trace to closest hit the ray
+  tracer->trace_to_closest(new_r, new_hit);
+  //get radiance from shade_new_ray, multiply by rho_d and put into result
+  result = rho_d * shade_new_ray(new_r, new_hit, emit);
+  //try to make a russian roulette
+
   return result + Phong::shade(r, hit, emit);
 }
