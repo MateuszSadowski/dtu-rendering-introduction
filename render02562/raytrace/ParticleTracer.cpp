@@ -90,6 +90,10 @@ void ParticleTracer::trace_particle(const Light* light, const unsigned int caust
   // Shoot a particle from the sampled source
   Ray r;
   HitInfo hit;
+  float3 phi = make_float3(0.0);
+  if(light->emit(r, hit, phi)) {
+      return;
+  }
 
   // Forward from all specular surfaces
   while(scene->is_specular(hit.material) && hit.trace_depth < 500)
@@ -122,6 +126,7 @@ void ParticleTracer::trace_particle(const Light* light, const unsigned int caust
   // Store in caustics map at first diffuse surface
   // Hint: When storing, the convention is that the photon direction
   //       should point back toward where the photon came from.
+  caustics.store(phi, hit.position, -r.direction); //TODO: exclude photon where trace step is not larger than 1
 }
 
 float3 ParticleTracer::get_diffuse(const HitInfo& hit) const
