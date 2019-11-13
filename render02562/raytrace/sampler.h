@@ -52,7 +52,7 @@ inline optix::float3 sample_cosine_weighted(const optix::float3& normal)
     float r2 = mt_random();
   // Calculate new direction as if the z-axis were the normal
     float theta = acos(sqrt(r1));
-    float phi = 2 * M_PI * r2;
+    float phi = 2 * M_PIf * r2;
     optix::float3 direction = optix::make_float3(sin(theta) * cos(phi), sin(theta) * sin(phi), cos(theta));
   // Rotate from z-axis to actual normal and return
     rotate_to_normal(normal, direction);
