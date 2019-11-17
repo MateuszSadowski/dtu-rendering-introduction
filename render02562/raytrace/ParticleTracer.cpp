@@ -91,19 +91,27 @@ void ParticleTracer::trace_particle(const Light* light, const unsigned int caust
   Ray r;
   HitInfo hit;
   float3 phi = make_float3(0.0);
-  if(light->emit(r, hit, phi)) {
+  if(light->emit(r, hit, phi)) {    //TODO: should it be !light->emit(r, hit, phi) ???
       return;
   }
 
   // Forward from all specular surfaces
   while(scene->is_specular(hit.material) && hit.trace_depth < 500)
   {
+      HitInfo new_hit;
+      Ray new_r;
     switch(hit.material->illum)
     {
     case 3:  // mirror materials
       {
         // Forward from mirror surfaces here
-        return;
+        if(!trace_reflected(r, hit, new_r, new_hit)) {
+            return;
+        }
+        r = new_r;
+        hit = new_hit;
+
+//        return;
       }
       break;
     case 11: // absorbing volume
@@ -115,7 +123,21 @@ void ParticleTracer::trace_particle(const Light* light, const unsigned int caust
     case 4:  // transparent materials
       {
         // Forward from transparent surfaces here
-        return;
+          float3 rho_d = get_diffuse(hit);
+          float diffuseReflectionProb = (rho_d.x + rho_d.y + rho_d.z) / 3;
+          if(mt_random() < 1 - diffuseReflectionProb) {
+              if(!trace_reflected(r, hit, new_r, new_hit)) {
+                  return;
+              }
+          } else {
+              if (!trace_refracted(r, hit, new_r, new_hit)) {
+                  return;
+              }
+          }
+          r = new_r;
+          hit = new_hit;
+
+//        return;
       }
       break;
     default: 
@@ -126,7 +148,9 @@ void ParticleTracer::trace_particle(const Light* light, const unsigned int caust
   // Store in caustics map at first diffuse surface
   // Hint: When storing, the convention is that the photon direction
   //       should point back toward where the photon came from.
-  caustics.store(phi, hit.position, -r.direction); //TODO: exclude photon where trace step is not larger than 1
+  if(hit.trace_depth > 1) {
+    caustics.store(phi, hit.position, -r.direction); //TODO: exclude photon where trace step is equal or smaller than 1
+  }
 }
 
 float3 ParticleTracer::get_diffuse(const HitInfo& hit) const
