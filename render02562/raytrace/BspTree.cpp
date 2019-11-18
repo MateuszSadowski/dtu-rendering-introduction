@@ -44,7 +44,7 @@ bool BspTree::closest_hit(Ray& r, HitInfo& hit) const
 
   closest_plane(r, hit);
   if(intersect_min_max(r)) {
-      return intersect_node(r, hit, *root);
+      intersect_node(r, hit, *root);
   }
 
   return hit.has_hit;
