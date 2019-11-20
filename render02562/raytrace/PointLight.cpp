@@ -67,11 +67,11 @@ bool PointLight::emit(Ray& r, HitInfo& hit, float3& Phi) const
     }
     while(dot(direction, direction) > 1.0f);
     direction = normalize(direction);
-    Ray new_ray = Ray(hit.position, direction, 0, 0.1);
+    r = Ray(light_pos, direction, 0, 0.1);
   // Trace ray
   // If a surface was hit, compute Phi and return true
-    HitInfo new_hit;
-    if(tracer->trace_to_closest(new_ray, new_hit)) {
+//    HitInfo new_hit;
+    if(tracer->trace_to_closest(r, hit)) {
         Phi = intensity * M_PIf * 4; // phi = L_e * phi * A
 
         return true;
