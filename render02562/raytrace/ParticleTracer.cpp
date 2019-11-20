@@ -108,6 +108,9 @@ void ParticleTracer::trace_particle(const Light *light, const unsigned int caust
             case 12: // absorbing glossy volume
             {
                 // Handle absorption here (Worksheet 8)
+                if(dot(hit.shading_normal, r.direction) > 0) {
+                    phi *= get_transmittance(hit);
+                }
             }
             case 2:  // glossy materials
             case 4:  // transparent materials
@@ -153,6 +156,9 @@ float3 ParticleTracer::get_transmittance(const HitInfo &hit) const {
         // this material property as an absorption coefficient. Since absorption has an effect
         // opposite that of reflection, using 1/rho_d-1 makes it more intuitive for the user.
         float3 rho_d = make_float3(hit.material->diffuse[0], hit.material->diffuse[1], hit.material->diffuse[2]);
+        float3 absorptionCoefficient = 1 / fmaxf(rho_d, make_float3(0.0001f)) - 1;
+        float3 T = expf(-absorptionCoefficient * hit.dist);
+        return T;
     }
     return make_float3(1.0f);
 }

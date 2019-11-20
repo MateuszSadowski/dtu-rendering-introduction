@@ -19,5 +19,15 @@ float3 GlossyVolume::shade(const Ray& r, HitInfo& hit, bool emit) const
   // by the transmittance of the material if the ray is inside (as in
   // the volume shader).
 
+  // copy things from Phong shade
+  // copy things from Glossy shade
+  // copy things from Absorption
+  // do the check again and multiply by transmittance
+
+
+    if(dot(hit.shading_normal, r.direction)) {
+        return get_transmittance(hit) * Transparent::shade(r, hit, emit);
+    }
+
   return Volume::shade(r, hit, emit);
 }
