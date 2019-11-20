@@ -76,16 +76,21 @@ bool RayTracer::trace_refracted(const Ray& in, const HitInfo& in_hit, Ray& out, 
   // Hints: (a) There is a refract function available in the OptiX math library.
   //        (b) Set out_hit.ray_ior and out_hit.trace_depth.
   //        (c) Remember that the function must handle total internal reflection.
-  float3 refraction_direction;
-  if(!refract(refraction_direction, in.direction, in_hit.geometric_normal, in_hit.material->ior / in_hit.ray_ior)) {
-    R = 1;
-  } else {
-      float cos_theta1 = dot(in.direction, in_hit.geometric_normal) / (length(in.direction) * length(in_hit.geometric_normal));
-      float cos_theta2 = dot(refraction_direction, in_hit.geometric_normal) / (length(refraction_direction) * length(in_hit.geometric_normal));
-      R = fresnel_R(cos_theta1, cos_theta2, in_hit.ray_ior, in_hit.material->ior);
-  }
-  out.direction = refraction_direction;
-  return trace_refracted(in, in_hit, out, out_hit);
+
+    float3 normal;
+    out_hit.ray_ior = get_ior_out(in, in_hit, normal);
+    if(refract(out.direction, in.direction, normal, out_hit.ray_ior / in_hit.ray_ior)) {
+        out = make_Ray(in_hit.position, out.direction, 0, 1e-4, RT_DEFAULT_MAX);
+        out_hit.trace_depth = in_hit.trace_depth + 1;
+
+        float cos_theta1 = abs(dot(in.direction, in_hit.shading_normal));
+        float cos_theta2 = abs(dot(out.direction, in_hit.shading_normal));
+        R = fresnel_R(cos_theta1, cos_theta2, in_hit.ray_ior, out_hit.ray_ior);
+
+        return trace_to_closest(out, out_hit);
+    } else {
+        R = 1.0;
+    }
 }
 
 float RayTracer::get_ior_out(const Ray& in, const HitInfo& in_hit, float3& normal) const
