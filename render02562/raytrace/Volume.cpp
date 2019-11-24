@@ -15,7 +15,7 @@ float3 Volume::shade(const Ray& r, HitInfo& hit, bool emit) const
   //if dot product normal and direction of the ray is positive you hit from inside
 
   // do this check where you do absorption
-  if(dot(hit.shading_normal, r.direction)) {
+  if(dot(hit.shading_normal, r.direction) > 0) {
       return get_transmittance(hit) * Transparent::shade(r, hit, emit);
   }
 
