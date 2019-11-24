@@ -54,7 +54,7 @@ bool Sphere::intersect(const Ray& r, HitInfo& hit, unsigned int prim_idx) const
       return true;
   }
 
-  float t2 = -(b / 2) - sqrt(pow(b / 2, 2) - c);
+  float t2 = -(b / 2) + sqrt(pow(b / 2, 2) - c);
 
     float3 hitPosition2 = r.origin + t2 * r.direction;
     float3 normal2 = normalize(hitPosition2 - center);

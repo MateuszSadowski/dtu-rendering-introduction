@@ -44,5 +44,5 @@ float3 Glossy::shade(const Ray& r, HitInfo& hit, bool emit) const
 //  return Mirror::shade(r, hit, emit);
 //  return 0.9*Transparent::shade(r, hit, emit) + 0.1*Mirror::shade(r, hit, emit);
 
-  return Phong::shade(r, hit, emit);
+//  return Phong::shade(r, hit, emit);
 }
